@@ -17,7 +17,7 @@ class EmergencyServicesScreen extends StatelessWidget {
             _buildEmergencyServiceCard(context, 'Police', Icons.local_police, 'tel:911'),
             _buildEmergencyServiceCard(context, 'Hospital', Icons.local_hospital, 'tel:911'),
             _buildEmergencyServiceCard(context, 'Fire', Icons.local_fire_department, 'tel:911'),
-            // Add more services as needed
+      
           ],
         ),
       ),
