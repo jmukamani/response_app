@@ -1,80 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+void main() {
+  runApp(MyApp());
+}
 
-class EmergencyServicesScreen extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: EmergencyServices(),
+    );
+  }
+}
+
+class EmergencyServices extends StatelessWidget {
+  final String phoneNumber = "+254741377211"; // Common emergency number for demonstration
+
+  void _makePhoneCall(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Emergency Services'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Center(
         child: GridView.count(
-          crossAxisCount: 2,
+          crossAxisCount: 3,
           children: <Widget>[
-            _buildEmergencyServiceCard(context, 'Police', Icons.local_police, 'tel:911'),
-            _buildEmergencyServiceCard(context, 'Hospital', Icons.local_hospital, 'tel:911'),
-            _buildEmergencyServiceCard(context, 'Fire', Icons.local_fire_department, 'tel:911'),
-      
+            ServiceIcon(
+              icon: Icons.local_police,
+              label: "Police",
+              onTap: () => _makePhoneCall('tel:$phoneNumber'),
+            ),
+            ServiceIcon(
+              icon: Icons.local_hospital,
+              label: "Hospital",
+              onTap: () => _makePhoneCall('tel:$phoneNumber'),
+            ),
+            ServiceIcon(
+              icon: Icons.local_fire_department,
+              label: "Fire",
+              onTap: () => _makePhoneCall('tel:$phoneNumber'),
+            ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _buildEmergencyServiceCard(BuildContext context, String serviceName, IconData icon, String phoneNumber) {
+class ServiceIcon extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const ServiceIcon({Key? key, required this.icon, required this.label, required this.onTap}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        _showEmergencyDialog(context, serviceName, phoneNumber);
-      },
-      child: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(icon, size: 50),
-            SizedBox(height: 10),
-            Text(serviceName, textAlign: TextAlign.center),
-          ],
-        ),
+      onTap: onTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Icon(icon, size: 50),
+          Text(label),
+        ],
       ),
-    );
-  }
-
-  void _showEmergencyDialog(BuildContext context, String serviceName, String phoneNumber) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(serviceName),
-          content: Text('Would you like to call $serviceName?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () async {
-                // Call the service
-                final Uri launchUri = Uri(scheme: 'tel', path: phoneNumber);
-                if (await canLaunchUrl(launchUri)) {
-                  await launchUrl(launchUri);
-                } else {
-                  // Handle the error when the URL can't be launched
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Could not launch $serviceName')),
-                  );
-                }
-                Navigator.of(context).pop();
-              },
-              child: Text('Call'),
-            ),
-          ],
-        );
-      },
     );
   }
 }
