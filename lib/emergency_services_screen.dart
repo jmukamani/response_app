@@ -35,6 +35,7 @@ class EmergencyServices extends StatelessWidget {
         child: GridView.count(
           crossAxisCount: 3,
           children: <Widget>[
+<<<<<<< HEAD
             ServiceIcon(
               icon: Icons.local_police,
               label: "Police",
@@ -50,6 +51,12 @@ class EmergencyServices extends StatelessWidget {
               label: "Fire",
               onTap: () => _makePhoneCall('tel:$phoneNumber'),
             ),
+=======
+            _buildEmergencyServiceCard(context, 'Police', Icons.local_police, 'tel:911'),
+            _buildEmergencyServiceCard(context, 'Hospital', Icons.local_hospital, 'tel:911'),
+            _buildEmergencyServiceCard(context, 'Fire', Icons.local_fire_department, 'tel:911'),
+      
+>>>>>>> f6d213e41125133053a9882b718b8cfc982aba96
           ],
         ),
       ),
