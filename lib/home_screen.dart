@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildNavigationButton(BuildContext context, String title, IconData icon, Widget screen) {
+  Widget _buildNavigationButton(BuildContex2t context, String title, IconData icon, Widget screen) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
