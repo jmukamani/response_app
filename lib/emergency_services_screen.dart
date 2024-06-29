@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
 class EmergencyServices extends StatelessWidget {
   final String phoneNumber = "+254741377211"; // Common emergency number for demonstration
 
-  void _makePhoneCall(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+  Future<void> _makePhoneCall(String url) async {
+    final Uri launchUri = Uri.parse(url);
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
     } else {
       throw 'Could not launch $url';
     }

@@ -1,45 +1,28 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(FirstAidApp());
-}
-
-class FirstAidApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'First Aid Training',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: FirstAidHomePage(),
-    );
-  }
-}
-
-class FirstAidHomePage extends StatelessWidget {
-  final List<FirstAidModule> modules = [
-    FirstAidModule(
-      title: 'CPR',
-      description: 'Cardiopulmonary Resuscitation procedure.',
-      image: 'assets/cpr.png',
-    ),
-    FirstAidModule(
-      title: 'Choking',
-      description: 'Procedure for assisting someone who is choking.',
-      image: 'assets/choking.png',
-    ),
-    FirstAidModule(
-      title: 'Burns',
-      description: 'Steps to treat minor and major burns.',
-      image: 'assets/burns.png',
-    ),
-    FirstAidModule(
-      title: 'Fractures',
-      description: 'How to handle and immobilize fractures.',
-      image: 'assets/fractures.png',
-    ),
-    // Add more modules here
+class FirstAidTrainingScreen extends StatelessWidget {
+  final List<Map<String, String>> modules = [
+    {
+      'title': 'CPR',
+      'description': 'Learn how to perform CPR on adults, children, and infants.',
+      'content': 'Step-by-step CPR instructions...'
+    },
+    {
+      'title': 'Choking',
+      'description': 'What to do if someone is choking.',
+      'content': 'Step-by-step choking relief instructions...'
+    },
+    {
+      'title': 'Burns',
+      'description': 'How to treat minor and severe burns.',
+      'content': 'Step-by-step burn treatment instructions...'
+    },
+    {
+      'title': 'Bleeding',
+      'description': 'How to control bleeding in an emergency.',
+      'content': 'Step-by-step bleeding control instructions...'
+    },
+    // Add more modules as needed
   ];
 
   @override
@@ -49,18 +32,22 @@ class FirstAidHomePage extends StatelessWidget {
         title: Text('First Aid Training'),
       ),
       body: ListView.builder(
+        padding: EdgeInsets.all(16.0),
         itemCount: modules.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(modules[index].title),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FirstAidDetailPage(module: modules[index]),
-                ),
-              );
-            },
+          return Card(
+            child: ListTile(
+              title: Text(modules[index]['title']!),
+              subtitle: Text(modules[index]['description']!),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ModuleDetailScreen(module: modules[index]),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),
@@ -68,41 +55,34 @@ class FirstAidHomePage extends StatelessWidget {
   }
 }
 
-class FirstAidDetailPage extends StatelessWidget {
-  final FirstAidModule module;
+class ModuleDetailScreen extends StatelessWidget {
+  final Map<String, String> module;
 
-  FirstAidDetailPage({required this.module});
+  ModuleDetailScreen({required this.module});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(module.title),
+        title: Text(module['title']!),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(module.image),
-            SizedBox(height: 20),
+          children: <Widget>[
             Text(
-              module.title,
+              module['title']!,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Text(module.description),
+            Text(
+              module['content']!,
+              style: TextStyle(fontSize: 16),
+            ),
           ],
         ),
       ),
     );
   }
-}
-
-class FirstAidModule {
-  final String title;
-  final String description;
-  final String image;
-
-  FirstAidModule({required this.title, required this.description, required this.image});
 }

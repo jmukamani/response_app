@@ -1,62 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(FeedbackApp());
-}
-
-class FeedbackApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Feedback Form',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: FeedbackForm(),
-    );
-  }
-}
-
-class BuildContext {
-}
-
-class FeedbackForm extends StatefulWidget {
-  _FeedbackFormState createState() => _FeedbackFormState();
-}
-
-class StatefulWidget {
-}
-
-class _FeedbackFormState extends State<FeedbackForm> {
+class FeedbackScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final _feedbackController = TextEditingController();
-
-  @override
-  void dispose() {
-    _feedbackController.dispose();
-    super.dispose();
-  }
-
-  void _submitFeedback() {
-    if (_formKey.currentState!.validate()) {
-      final feedback = _feedbackController.text;
-
-      // Here, you can handle the feedback submission logic
-      // For example, send the feedback to a server or save it locally
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Feedback submitted: $feedback')),
-      );
-
-      _feedbackController.clear();
-    }
-  }
+  final TextEditingController _feedbackController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feedback Form'),
+        title: Text('Feedback'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -64,24 +16,39 @@ class _FeedbackFormState extends State<FeedbackForm> {
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: <Widget>[
+              Text(
+                'We value your feedback!',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
               TextFormField(
                 controller: _feedbackController,
+                maxLines: 5,
                 decoration: InputDecoration(
                   labelText: 'Enter your feedback',
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter some feedback';
+                    return 'Please enter your feedback';
                   }
                   return null;
                 },
-                maxLines: 5,
               ),
               SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: _submitFeedback,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // Handle feedback submission here
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Thank you for your feedback!')),
+                      );
+                      // Clear the feedback form
+                      _feedbackController.clear();
+                    }
+                  },
                   child: Text('Submit'),
                 ),
               ),
@@ -92,6 +59,4 @@ class _FeedbackFormState extends State<FeedbackForm> {
     );
   }
 }
-
-class FormState {
-}
+ 
