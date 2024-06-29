@@ -9,12 +9,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: EmergencyServices(),
+      home: EmergencyServicesScreen(),
     );
   }
 }
 
-class EmergencyServices extends StatelessWidget {
+class EmergencyServicesScreen extends StatelessWidget {
   final String phoneNumber = "+254741377211"; // Common emergency number for demonstration
 
   Future<void> _makePhoneCall(String url) async {

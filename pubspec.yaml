@@ -20,3 +20,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/logo.jpg
+    - assets/fire.jpeg
+    - assets/police.jpeg
+    - assets/ambulance.jpeg

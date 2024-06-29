@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             SizedBox(height: 20),
             // App Logo
-            Image.asset('assets/logo.png', height: 100),
+            Image.asset('assets/logo.png', height: 100, width: 100),
             SizedBox(height: 20),
             // Welcome Message
             Text(
