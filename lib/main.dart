@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';  // Import the HomeScreen class
+import 'home_screen.dart'
 
 void main() {
   runApp(EmergencyApp());
 }
 
 class EmergencyApp extends StatelessWidget {
+  get home_screen => null;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +15,7 @@ class EmergencyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: HomeScreen(),  // Use the HomeScreen widget
+      home: home_screen.dart(),  // Use the HomeScreen widget
     );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'emergency_services_screen.dart';
+// Update imports with the correct class names if they are different
+import 'emergency_services.dart'; // Assuming the file name and class name are corrected
 import 'profile_screen.dart';
-import 'location_sharing_screen.dart'; 
+import 'location_sharing.dart'; // Assuming the file name and class name are corrected
 import 'first_aid_training_screen.dart';
 import 'communication_screen.dart';
 import 'community_first_responders_screen.dart';
@@ -13,6 +14,9 @@ import 'feedback_screen.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
+}
+
+class StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
