@@ -4,6 +4,9 @@
 
 The Emergency Response App is designed to provide quick access to essential emergency services and information. It includes features such as emergency contacts, location sharing, first aid training, and communication with community first responders. This app aims to enhance user safety by providing crucial tools and resources during emergencies.
 
+## Demo Link: 
+https://www.loom.com/share/e0ff1ace7c1041dc98eba76dcea103c4?sid=9ac694cf-7c18-4332-95a2-6eea8a58cdcf
+
 ## Features
 
 - **Home Screen**: Central navigation hub with quick access to main features.
@@ -39,8 +42,7 @@ To run this app locally, follow these steps:
     ```
 
 ## File Structure
-
-```plaintext
+The file structure of the app is organized into the following folders and files:
 lib/
 ├── main.dart
 ├── home_screen.dart
@@ -56,6 +58,8 @@ lib/
 ├── feedback_screen.dart
 
 ##Usage
+
+To use the app, follow these steps:
 Home Screen: Navigate to various sections of the app.
 Emergency Services: Tap on icons to call emergency services.
 Profile: View and edit your personal information.
