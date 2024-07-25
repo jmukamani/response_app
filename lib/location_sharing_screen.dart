@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-class MapScreen extends StatefulWidget {
+class LocationSharingScreen extends StatefulWidget {
   @override
-  _MapScreenState createState() => _MapScreenState();
+  _LocationSharingScreenState createState() => _LocationSharingScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _LocationSharingScreenState extends State<LocationSharingScreen> {
   Location _location = Location();
   GoogleMapController? _controller;
   LatLng _currentPosition = LatLng(0.0, 0.0);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'emergency_services_screen.dart'; // Ensure these imports are correct
+import 'emergency_services_screen.dart';
 import 'feedback_screen.dart';
 import 'first_aid_training_screen.dart';
 import 'profile_screen.dart';
-import 'location_sharing_screen.dart'; // This should be 'MapScreen'
+import 'location_sharing_screen.dart'; 
 import 'communication_screen.dart';
 import 'community_first_responders_screen.dart';
 import 'offline_emergency_mode_screen.dart';
@@ -19,10 +19,17 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
+<<<<<<< HEAD
     Text('Home'),
     EmergencyServices(), // Ensure this screen is imported correctly
     Text('Profile'),
     Text('Settings'),
+=======
+    HomeContent(),
+    EmergencyServicesScreen(),
+    ProfileScreen(),
+    SettingsScreen(),
+>>>>>>> 1b8ce5e896c3f29714d011a1487c643e1fca6453
   ];
 
   void _onItemTapped(int index) {
@@ -37,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Home'),
       ),
+<<<<<<< HEAD
       body: Center(
         child: Column(
           children: <Widget>[
@@ -71,6 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+=======
+      body: _widgetOptions[_selectedIndex],
+>>>>>>> 1b8ce5e896c3f29714d011a1487c643e1fca6453
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -79,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.local_hospital),
-            label: 'Emergency',
+            label: 'Emergency Services',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -93,6 +104,46 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+class HomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 20),
+          // App Logo
+          Image.asset('assets/logo.png', height: 100, width: 100),
+          SizedBox(height: 20),
+          // Welcome Message
+          Text(
+            'Welcome, User!',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 20),
+          // Navigation Buttons
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: <Widget>[
+                _buildNavigationButton(context, 'Emergency Services', Icons.local_hospital, EmergencyServicesScreen()),
+                _buildNavigationButton(context, 'Profile', Icons.person, ProfileScreen()),
+                _buildNavigationButton(context, 'Location Sharing', Icons.location_on, LocationSharingScreen()),
+                _buildNavigationButton(context, 'First Aid Training', Icons.school, FirstAidTrainingScreen()), 
+                _buildNavigationButton(context, 'Communication', Icons.chat, CommunicationScreen()),
+                _buildNavigationButton(context, 'Community First Responders', Icons.people, CommunityFirstRespondersScreen()),
+                _buildNavigationButton(context, 'Offline Emergency Mode', Icons.offline_bolt, OfflineEmergencyModeScreen()),
+                _buildNavigationButton(context, 'Settings', Icons.settings, SettingsScreen()),
+                _buildNavigationButton(context, 'Help and Support', Icons.help, HelpAndSupportScreen()),
+                _buildNavigationButton(context, 'Feedback', Icons.feedback, FeedbackScreen()),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
