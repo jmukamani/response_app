@@ -33,6 +33,29 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyABD8cEJ6O8S8vq3MxPNhB44ZNMFNkJu70",
+      authDomain: "emergency-response-app1.firebaseapp.com",
+      projectId: "emergency-response-app1",
+      storageBucket: "emergency-response-app1.appspot.com",
+      messagingSenderId: "873831261454",
+      appId: "1:873831261454:web:0beccaf4a782cdbcf1a35f",
+      measurementId: "G-STRLVV4JQB"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

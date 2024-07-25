@@ -56,6 +56,18 @@ pkg_check_modules(GTK REQUIRED IMPORTED_TARGET gtk+-3.0)
 
 add_definitions(-DAPPLICATION_ID="${APPLICATION_ID}")
 
+# Firebase C++ SDK path
+set(FIREBASE_CPP_SDK_DIR "C:/path/to/firebase_cpp_sdk") # Update this to the actual path
+
+if (NOT EXISTS "${FIREBASE_CPP_SDK_DIR}/firebase_app/CMakeLists.txt")
+  message(FATAL_ERROR "Firebase C++ SDK directory not found: ${FIREBASE_CPP_SDK_DIR}")
+endif()
+
+add_subdirectory(${FIREBASE_CPP_SDK_DIR}/firebase_app ${CMAKE_CURRENT_BINARY_DIR}/firebase_app)
+add_subdirectory(${FIREBASE_CPP_SDK_DIR}/firebase_auth ${CMAKE_CURRENT_BINARY_DIR}/firebase_auth)
+add_subdirectory(${FIREBASE_CPP_SDK_DIR}/firebase_firestore ${CMAKE_CURRENT_BINARY_DIR}/firebase_firestore)
+add_subdirectory(${FIREBASE_CPP_SDK_DIR}/firebase_storage ${CMAKE_CURRENT_BINARY_DIR}/firebase_storage)
+
 # Define the application target. To change its name, change BINARY_NAME above,
 # not the value here, or `flutter run` will no longer work.
 #
@@ -74,6 +86,12 @@ apply_standard_settings(${BINARY_NAME})
 target_link_libraries(${BINARY_NAME} PRIVATE flutter)
 target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
 
+# Firebase dependencies
+target_link_libraries(${BINARY_NAME} PRIVATE firebase_app)
+target_link_libraries(${BINARY_NAME} PRIVATE firebase_auth)
+target_link_libraries(${BINARY_NAME} PRIVATE firebase_firestore)
+target_link_libraries(${BINARY_NAME} PRIVATE firebase_storage)
+
 # Run the Flutter tool portions of the build. This must not be removed.
 add_dependencies(${BINARY_NAME} flutter_assemble)
 
@@ -86,11 +104,9 @@ set_target_properties(${BINARY_NAME}
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/intermediates_do_not_run"
 )
 
-
 # Generated plugin build rules, which manage building the plugins and adding
 # them to the application.
 include(flutter/generated_plugins.cmake)
-
 
 # === Installation ===
 # By default, "installing" just makes a relocatable bundle in the build

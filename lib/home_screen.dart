@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'emergency_services_screen.dart';
+import 'emergency_services_screen.dart'; // Ensure these imports are correct
 import 'feedback_screen.dart';
-import 'first_aid_training_screen.dart'; 
+import 'first_aid_training_screen.dart';
 import 'profile_screen.dart';
-import 'location_sharing_screen.dart';
+import 'location_sharing_screen.dart'; // This should be 'MapScreen'
 import 'communication_screen.dart';
 import 'community_first_responders_screen.dart';
 import 'offline_emergency_mode_screen.dart';
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   static List<Widget> _widgetOptions = <Widget>[
     Text('Home'),
-    EmergencyServicesScreen(),
+    EmergencyServices(), // Ensure this screen is imported correctly
     Text('Profile'),
     Text('Settings'),
   ];
@@ -55,10 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: GridView.count(
                 crossAxisCount: 2,
                 children: <Widget>[
-                  _buildNavigationButton(context, 'Emergency Services', Icons.local_hospital, EmergencyServicesScreen()),
+                  _buildNavigationButton(context, 'Emergency Services', Icons.local_hospital, EmergencyServices()),
                   _buildNavigationButton(context, 'Profile', Icons.person, ProfileScreen()),
-                  _buildNavigationButton(context, 'Location Sharing', Icons.location_on, LocationSharingScreen()),
-                  _buildNavigationButton(context, 'First Aid Training', Icons.school, FirstAidTrainingScreen()), 
+                  _buildNavigationButton(context, 'Location Sharing', Icons.location_on, MapScreen()), // Use MapScreen
+                  _buildNavigationButton(context, 'First Aid Training', Icons.school, FirstAidTrainingScreen()),
                   _buildNavigationButton(context, 'Communication', Icons.chat, CommunicationScreen()),
                   _buildNavigationButton(context, 'Community First Responders', Icons.people, CommunityFirstRespondersScreen()),
                   _buildNavigationButton(context, 'Offline Emergency Mode', Icons.offline_bolt, OfflineEmergencyModeScreen()),

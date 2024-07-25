@@ -52,11 +52,18 @@ add_subdirectory(${FLUTTER_MANAGED_DIR})
 # Application build; see runner/CMakeLists.txt.
 add_subdirectory("runner")
 
-
 # Generated plugin build rules, which manage building the plugins and adding
 # them to the application.
 include(flutter/generated_plugins.cmake)
 
+# Adjust the path to Firebase C++ SDK
+set(FIREBASE_CPP_SDK_DIR "${CMAKE_CURRENT_LIST_DIR}/../build/windows/x64/extracted/firebase_cpp_sdk")
+if(EXISTS ${FIREBASE_CPP_SDK_DIR})
+  add_subdirectory(${FIREBASE_CPP_SDK_DIR} firebase_cpp_sdk)
+  target_link_libraries(${BINARY_NAME} PRIVATE firebase_app firebase_auth firebase_storage firebase_firestore)
+else()
+  message(FATAL_ERROR "Firebase C++ SDK directory not found: ${FIREBASE_CPP_SDK_DIR}")
+endif()
 
 # === Installation ===
 # Support files are copied into place next to the executable, so that it can

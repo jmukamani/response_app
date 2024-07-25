@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873831261454",
+    "project_id": "emergency-response-app1",
+    "storage_bucket": "emergency-response-app1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873831261454:android:e730ad5768cd38a9f1a35f",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxd7iW0aPQv-hZFfuU07bj9sdvA22dQJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
