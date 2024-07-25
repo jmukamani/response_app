@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class HelpAndSupportScreen extends StatefulWidget {
-  @override
   _HelpAndSupportScreenState createState() => _HelpAndSupportScreenState();
 }
 
