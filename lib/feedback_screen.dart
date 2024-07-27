@@ -6,7 +6,6 @@ class FeedbackScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bold;
     return Scaffold(
       appBar: AppBar(
         title: Text('Feedback'),
@@ -61,6 +60,8 @@ class FeedbackScreen extends StatelessWidget {
   }
 }
 
-class FontWeight {
+void main() {
+  runApp(MaterialApp(
+    home: FeedbackScreen(),
+  ));
 }
- 

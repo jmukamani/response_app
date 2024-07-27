@@ -83,7 +83,9 @@ class ContactForm extends StatefulWidget {
 class _ContactFormState extends State<ContactForm> {
   final _formKey = GlobalKey<FormState>();
   String _name = '';
+  // ignore: unused_field
   String _email = '';
+  // ignore: unused_field
   String _message = '';
 
   @override
