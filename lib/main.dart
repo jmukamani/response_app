@@ -18,7 +18,8 @@ class EmergencyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: AuthWrapper(),  // Use the AuthWrapper to determine the initial screen
+      home:
+          AuthWrapper(), // Use the AuthWrapper to determine the initial screen
     );
   }
 }
