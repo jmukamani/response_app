@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:response_app/home_screen.dart';  // Replace with your HomeScreen import
-import 'login_screen.dart';  // Replace with your SignInScreen import
+import 'package:response_app/home_screen.dart'; // Replace with your HomeScreen import
+import 'login_screen.dart'; // Replace with your SignInScreen import
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthenticationWrapper extends StatelessWidget {

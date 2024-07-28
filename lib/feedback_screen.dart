@@ -59,4 +59,9 @@ class FeedbackScreen extends StatelessWidget {
     );
   }
 }
- 
+
+void main() {
+  runApp(MaterialApp(
+    home: FeedbackScreen(),
+  ));
+}

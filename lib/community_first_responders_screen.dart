@@ -111,7 +111,9 @@ class ResponderDetailScreen extends StatelessWidget {
 
   Future<void> _makePhoneCall(String url) async {
     final Uri launchUri = Uri.parse(url);
+    // ignore: deprecated_member_use
     if (await canLaunch(launchUri.toString())) {
+      // ignore: deprecated_member_use
       await launch(launchUri.toString());
     } else {
       throw 'Could not launch $url';
@@ -123,7 +125,9 @@ class ResponderDetailScreen extends StatelessWidget {
       scheme: 'mailto',
       path: email,
     );
+    // ignore: deprecated_member_use
     if (await canLaunch(launchUri.toString())) {
+      // ignore: deprecated_member_use
       await launch(launchUri.toString());
     } else {
       throw 'Could not send email to $email';

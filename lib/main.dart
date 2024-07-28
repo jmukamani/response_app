@@ -6,7 +6,15 @@ import 'login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  
+  try {
+    await Firebase.initializeApp();
+    print('Firebase initialized successfully');
+  } catch (e) {
+    // Handle error here, possibly show an error screen or message
+    print('Failed to initialize Firebase: $e');
+  }
+  
   runApp(EmergencyApp());
 }
 
@@ -20,7 +28,6 @@ class EmergencyApp extends StatelessWidget {
       ),
       home:
           AuthWrapper(), // Use the AuthWrapper to determine the initial screen
-    );
   }
 }
 
@@ -38,6 +45,13 @@ class AuthWrapper extends StatelessWidget {
           );
         } else if (snapshot.hasData) {
           return HomeScreen();
+        } else if (snapshot.hasError) {
+          print('Error: ${snapshot.error}');
+          return Scaffold(
+            body: Center(
+              child: Text('Something went wrong: ${snapshot.error}'),
+            ),
+          );
         } else {
           return LoginScreen();
         }

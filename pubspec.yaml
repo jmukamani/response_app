@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: latest_version
+  firebase_auth: latest_version
   google_maps_flutter: ^2.0.6
   location: ^4.1.1
   cupertino_icons: ^1.0.2
